@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WANG ZHENYU | Mobile Programming e-Portfolio</title>
+  <style>
+    :root {
+      --bg: #f5fbfa;
+      --card: #ffffff;
+      --text: #17312f;
+      --muted: #5d7471;
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --accent: #22c55e;
+      --soft: #dff7f1;
+      --border: #cfe9e4;
+      --shadow: 0 18px 45px rgba(15, 118, 110, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f5fbfa 0%, #e8fff3 45%, #eef8ff 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      background: var(--soft);
+      color: var(--primary-dark);
+    }
+
+    main { max-width: 1180px; margin: auto; padding: 0 22px 40px; }
+
+    section { scroll-margin-top: 86px; padding: 62px 0; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 28px;
+      align-items: center;
+      min-height: 78vh;
+      padding-top: 56px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--soft);
+      color: var(--primary-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      margin: 22px 0 14px;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 0 0 10px;
+      letter-spacing: -1px;
+    }
+
+    h3 { margin-top: 0; color: var(--primary-dark); }
+
+    .lead { font-size: 18px; color: var(--muted); max-width: 780px; }
+
+    .hero-card, .card, .project-card, .sdg-box {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card { padding: 28px; }
+
+    .profile-circle {
+      width: 122px;
+      height: 122px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 40px;
+      font-weight: 900;
+      margin-bottom: 22px;
+      box-shadow: 0 16px 36px rgba(15, 118, 110, 0.28);
+    }
+
+    .info-list { display: grid; gap: 12px; margin-top: 16px; }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .info-item span:first-child { color: var(--muted); font-weight: 700; }
+    .info-item span:last-child { text-align: right; font-weight: 800; }
+
+    .section-title { margin-bottom: 26px; }
+    .section-title p { margin: 0; color: var(--muted); max-width: 780px; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .labs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+
+    .card, .project-card { padding: 22px; overflow: hidden; }
+
+    .tag {
+      display: inline-block;
+      background: #eefdf4;
+      color: var(--primary-dark);
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .video {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #d9efeb;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+    }
+
+    .video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      border: 1px solid var(--primary);
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--primary-dark);
+      border-color: var(--border);
+    }
+
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 20px rgba(15, 118, 110, 0.18); }
+
+    .sdg-box { padding: 28px; background: linear-gradient(135deg, #ffffff 0%, #e8fff3 100%); }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .skill {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--primary-dark);
+      padding: 10px 13px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(15, 118, 110, 0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 36px 18px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.75);
+    }
+
+    .muted { color: var(--muted); }
+
+    @media (max-width: 820px) {
+      nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { justify-content: flex-start; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .grid, .labs-grid { grid-template-columns: 1fr; }
+      section { padding: 44px 0; }
+      .info-item { flex-direction: column; gap: 2px; }
+      .info-item span:last-child { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#home">WANG ZHENYU · e-Portfolio</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#labs">Labs</a>
+        <a href="#projects">Projects</a>
+        <a href="#reflection">Reflection</a>
+        <a href="#skills">Skills</a>
+        <a href="#resources">Resources</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div>
+        <span class="badge">SDG 03 · Good Health and Well-being</span>
+        <h1>Mobile Programming e-Portfolio</h1>
+        <p class="lead">Hello and welcome to my Mobile Programming e-Portfolio. My name is WANG ZHENYU, matric number A207338, and I am taking TTTM2213 Mobile Programming under the guidance of Cikgu Izwan. This portfolio presents my learning journey from Lab 1 to Project 2, showing how I gradually developed my Android development skills through Kotlin, Jetpack Compose, navigation, Room Database, and sensor-based features.</p>
+        <div class="btn-row">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#labs">Explore Labs</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Student information">
+        <div class="profile-circle" aria-label="Profile initials">WZ</div>
+        <h3>Student Information</h3>
+        <div class="info-list">
+          <div class="info-item"><span>Name</span><span>WANG ZHENYU</span></div>
+          <div class="info-item"><span>Matric No.</span><span>A207338</span></div>
+          <div class="info-item"><span>Course</span><span>TTTM2213 Mobile Programming</span></div>
+          <div class="info-item"><span>Instructor</span><span>Cikgu Izwan</span></div>
+          <div class="info-item"><span>Theme</span><span>Habit Development & Health</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section aria-label="SDG statement">
+      <div class="sdg-box">
+        <span class="tag">Sustainable Development Goal</span>
+        <h2>SDG 03: Good Health and Well-being</h2>
+        <p>This portfolio is aligned with SDG 3: Good Health and Well-being. I chose this SDG because mobile applications can help people build positive daily habits, monitor their progress, and improve their physical and mental well-being through simple and accessible technology.</p>
+      </div>
+    </section>
+
+    <section id="labs">
+      <div class="section-title">
+        <h2>Labs</h2>
+        <p>These five labs show my progress from building basic user interfaces to developing Android applications with navigation and local database storage.</p>
+      </div>
+
+      <div class="labs-grid">
+        <article class="card">
+          <span class="tag">Lab 1 · UI</span>
+          <h3>Building a Basic User Interface</h3>
+          <p class="muted">This lab focused on creating the foundation of a mobile interface using Jetpack Compose.</p>
+          <div class="video"><iframe src="https://www.youtube.com/embed/TvbnNb_tHbU" title="Lab 1 UI video" allowfullscreen></iframe></div>
+          <p>Through Lab 1, I learned how to create a basic mobile user interface using Jetpack Compose. This lab helped me understand the importance of layout structure, spacing, text arrangement, and visual hierarchy. It also became the foundation for designing more complete and user-friendly screens in later labs.</p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Lab 2 · Interaction</span>
+          <h3>User Input and Interaction</h3>
+          <p class="muted">This lab introduced interactive components and user-driven state changes.</p>
+          <div class="video"><iframe src="https://www.youtube.com/embed/9LUIUAE95OM" title="Lab 2 Interaction video" allowfullscreen></iframe></div>
+          <p>In Lab 2, I learned how to make an application respond to user actions. I practiced using buttons, text fields, state changes, and event handling to create a more interactive user experience. This lab helped me understand that a good mobile app should not only look clear, but also respond smoothly and meaningfully to users.</p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Lab 3 · Material Design</span>
+          <h3>Modern Android Design</h3>
+          <p class="muted">This lab improved the visual quality and consistency of the app interface.</p>
+          <div class="video"><iframe src="https://www.youtube.com/embed/3Y95O2JqWoQ" title="Lab 3 Material Design video" allowfullscreen></iframe></div>
+          <p>Lab 3 introduced me to Material Design and helped me improve the visual quality of my application. I learned how to use components such as cards, buttons, colors, and icons to make the interface more modern and consistent. This lab showed me that design is an important part of usability, not just decoration.</p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Lab 4 · Navigation</span>
+          <h3>Multi-Screen Navigation</h3>
+          <p class="muted">This lab focused on connecting different screens in a logical user flow.</p>
+          <div class="video"><iframe src="https://www.youtube.com/embed/Q-XPs_6kBUY" title="Lab 4 Navigation video" allowfullscreen></iframe></div>
+          <p>In Lab 4, I learned how to connect multiple screens using navigation. This was an important step because real mobile applications usually contain many pages and features. By practicing navigation, I understood how to create a logical user flow and make the app easier for users to explore.</p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Lab 5 · Room</span>
+          <h3>Local Data Storage</h3>
+          <p class="muted">This lab introduced Room Database and data persistence in Android development.</p>
+          <div class="video"><iframe src="https://www.youtube.com/embed/SsyG0t3yTk8" title="Lab 5 Room video" allowfullscreen></iframe></div>
+          <p>Lab 5 helped me understand how to store and manage local data using Room Database. I learned how entities, DAO, database classes, and ViewModel work together to save and retrieve information. This lab was very useful because it showed me how an application can keep user data even after it is closed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>The projects demonstrate how the lab knowledge was applied to build habit development applications related to health and well-being.</p>
+      </div>
+
+      <div class="grid">
+        <article class="project-card">
+          <span class="tag">Project 1</span>
+          <h3>Habit Develop Project 1</h3>
+          <p><strong>Problem Statement:</strong> Many students struggle to maintain consistent daily habits because they lack a simple tool to organize and review their progress. This project aims to support healthier routines through a mobile application focused on habit development.</p>
+          <div class="video"><iframe src="https://www.youtube.com/embed/M1ZS-pjgjfo" title="Habit Develop Project 1 VSR" allowfullscreen></iframe></div>
+          <p>In Habit Develop Project 1, I combined the skills from the earlier labs to build a functional mobile application. I improved my ability to design screens, organize features, and manage user interaction in a structured way. This project helped me understand the importance of planning the app flow before starting the implementation.</p>
+          <div class="btn-row">
+            <a class="btn" href="https://github.com/WANGZHENYU123966/A2207338WANGZHENYUProject1" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn secondary" href="https://youtu.be/M1ZS-pjgjfo" target="_blank" rel="noopener">Open YouTube</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="tag">Project 2</span>
+          <h3>Habit Develop Project 2</h3>
+          <p><strong>Problem Statement:</strong> Users need a more complete habit tracking application that can record information, keep data after closing the app, and support healthier lifestyle management. This project extends the habit development idea by using database storage, ViewModel, and sensor-based features.</p>
+          <div class="video"><iframe src="https://www.youtube.com/embed/LjwovE8-NdQ" title="Habit Develop Project 2 VSR" allowfullscreen></iframe></div>
+          <p>In Habit Develop Project 2, I further improved the application by applying more advanced mobile programming concepts such as Room Database, ViewModel, sensor integration, and data persistence. This project helped me understand how mobile technology can support real user needs, especially in habit tracking and healthy lifestyle management. I also improved my debugging and problem-solving skills while connecting different parts of the app together.</p>
+          <div class="btn-row">
+            <a class="btn" href="https://github.com/WANGZHENYU123966/A207338-WANG-ZHENYU-Project2" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn secondary" href="https://youtu.be/LjwovE8-NdQ" target="_blank" rel="noopener">Open YouTube</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="reflection">
+      <div class="section-title">
+        <h2>Reflection & Learning Journey</h2>
+        <p>My progress in this course was built step by step through practical labs and project development.</p>
+      </div>
+      <article class="card">
+        <p>Throughout this course, I gradually developed my mobile programming skills from creating a simple interface in Lab 1 to building a more complete Android application in Project 2. Each lab introduced an important concept, including UI design, interaction, Material Design, navigation, and local database storage. These experiences helped me understand how different Android components work together in a real application. Overall, this course improved my confidence in Android development and showed me how technology can support SDG 3 by encouraging healthier daily habits.</p>
+      </article>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <h2>Skills & Tech Stack</h2>
+        <p>These are the main tools and concepts I practiced during the labs and projects.</p>
+      </div>
+      <div class="skills" aria-label="Skills list">
+        <span class="skill">Kotlin</span>
+        <span class="skill">Android Studio</span>
+        <span class="skill">Jetpack Compose</span>
+        <span class="skill">Material Design</span>
+        <span class="skill">Navigation Component</span>
+        <span class="skill">Room Database</span>
+        <span class="skill">DAO</span>
+        <span class="skill">Entity</span>
+        <span class="skill">ViewModel</span>
+        <span class="skill">State Management</span>
+        <span class="skill">Sensor Integration</span>
+        <span class="skill">Git</span>
+        <span class="skill">GitHub</span>
+        <span class="skill">GitHub Pages</span>
+        <span class="skill">UI/UX Design</span>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="section-title">
+        <h2>Resources</h2>
+        <p>Resources and acknowledgements used to support this e-Portfolio and coursework.</p>
+      </div>
+      <article class="card">
+        <p>This e-Portfolio was developed using Android Studio, Kotlin, Jetpack Compose, Room Database, ViewModel, GitHub, GitHub Pages, and YouTube. AI assistance was used to support writing, organization, and website generation, while the project content, videos, GitHub repositories, and implementation were based on my own coursework.</p>
+        <div class="btn-row">
+          <a class="btn" href="https://github.com/WANGZHENYU123966/A2207338WANGZHENYUProject1" target="_blank" rel="noopener">Project 1 Repository</a>
+          <a class="btn secondary" href="https://github.com/WANGZHENYU123966/A207338-WANG-ZHENYU-Project2" target="_blank" rel="noopener">Project 2 Repository</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>WANG ZHENYU</strong> · A207338 · TTTM2213 Mobile Programming · 2026</p>
+  </footer>
+</body>
+</html>
